@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 # encrypt and decrypt arbitrary string (and ints) using Ceasar shift cipher
 
+text = input("Input word or phrase to be encrypted: ")
+shift = input("Enter shift amount: ")
+shift = int(shift)
+
+
 def encrypt(string, s):
     encryption = ""
     #traverse each char in text
@@ -45,10 +50,6 @@ def encrypt(string, s):
             encryption += c
             #could shift for numbers in text
     return encryption
-
-#to do: input text from user
-text = "Ceasar's CIPHER time 123zz"
-shift = 3
 
 print("\nEncryption:")
 print("Plain text: ", text)
