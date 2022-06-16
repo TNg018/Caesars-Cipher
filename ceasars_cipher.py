@@ -5,6 +5,8 @@ text = input("Input word or phrase to be encrypted: ")
 shift = input("Enter shift amount: ")
 shift = int(shift)
 
+# to do ask user how many times to encrypt / decrypt
+
 def encrypt(string, s):
     encryption = ""
     #traverse each char in text
@@ -56,6 +58,8 @@ print("Shift\t  : ", str(shift))
 print("Encrypted : ", encrypt(text,shift))
 
 encrypted_text = encrypt(text,shift)
+
+# ask if user wants to decrypt
 
 def decrypt(string):
     decryption = ""
@@ -152,8 +156,7 @@ def brute_force(string):
         print(x,":\t",attempt)
     return attempt
 
-
-
+# ask if user wants to do brute force decryption
 brute_force(encrypted_text)
 
 
