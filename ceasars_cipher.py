@@ -5,7 +5,6 @@ text = input("Input word or phrase to be encrypted: ")
 shift = input("Enter shift amount: ")
 shift = int(shift)
 
-
 def encrypt(string, s):
     encryption = ""
     #traverse each char in text
