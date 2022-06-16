@@ -32,6 +32,7 @@ public class Caesars_cipher {
         int current, rank;
         StringBuffer encoded = new StringBuffer();
         char c;
+        String d;
 
         //iterate through input to encrypt
         for (int i=0; i<input.length(); i++) {
@@ -57,15 +58,15 @@ public class Caesars_cipher {
                 c = lower_case_alphabet.charAt(rank);
                 encoded.append(c);
             //else if a digit, iterate over 10 numbers 0 - 9
-            //} else if (Character.isDigit(input.charAt(c))) {
+            } else if (Character.isDigit(c)) {
                 // c = nth char of text input
                 // calculate r = rank of c in alphabet
-                //current = digits.indexOf(input.charAt(i));
+                current = digits.indexOf(input.charAt(i));
                 // shift and get position within alphabet
-                //rank = (current + s) % 10;
+                rank = (current + s) % 10;
                 //letter with rank R2 in alphabet
-                //c = digits.charAt(rank);
-                //encoded.append(c);
+                c = digits.charAt(rank);
+                encoded.append(c);
             //else , if not upper or lowercase, leave as is 
             } else {
                 encoded.append(c);
@@ -101,6 +102,16 @@ public class Caesars_cipher {
                 rank = (current + (26 - s)) % 26;
                 //letter with rank R2 in alphabet
                 c = lower_case_alphabet.charAt(rank);
+                decoded.append(c);
+            //else if a digit, iterate over 10 numbers 0 - 9
+            } else if (Character.isDigit(c)) {
+                // c = nth char of text input
+                // calculate r = rank of c in alphabet
+                current = digits.indexOf(input.charAt(i));
+                // shift and get position within alphabet
+                rank = (current + (10 - s)) % 10;
+                //letter with rank R2 in alphabet
+                c = digits.charAt(rank);
                 decoded.append(c);
             //else , if not upper or lowercase, leave as is 
             } else {
@@ -143,6 +154,16 @@ public class Caesars_cipher {
                     rank = (current + x) % 26;
                     //letter with rank R2 in alphabet
                     c = lower_case_alphabet.charAt(rank);
+                    attempt.append(c);
+                //else if a digit, iterate over 10 numbers 0 - 9
+                } else if (Character.isDigit(c)) {
+                    // c = nth char of text input
+                    // calculate r = rank of c in alphabet
+                    current = digits.indexOf(input.charAt(i));
+                    // shift and get position within alphabet
+                    rank = (current + (x + 4)) % 10;
+                    //letter with rank R2 in alphabet
+                    c = digits.charAt(rank);
                     attempt.append(c);                
                 //else , if not upper or lowercase, leave as is 
                 } else {
