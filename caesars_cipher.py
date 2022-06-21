@@ -115,7 +115,6 @@ def brute_force(string):
     while x < 26:
         attempt = ""
         x = x+1
-        lx = x+1
         for c in encrypted_text:
             if c.isupper():
                 c_unicode = ord(c)
@@ -141,7 +140,7 @@ def brute_force(string):
                 c_unicode = ord(c)
                 c_index = ord(c) - ord('0')
                 #shift
-                new_index = (c_index + lx) % 10
+                new_index = (c_index + x + 4) % 10
                 #convert to new char
                 new_unicode = new_index + ord('0')
                 new_char = chr(new_unicode) 
