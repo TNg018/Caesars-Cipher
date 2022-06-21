@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 # encrypt and decrypt arbitrary string (and ints) using Ceasar shift cipher
 
-text = input("Input word or phrase to be encrypted: ")
-shift = input("Enter shift amount: ")
+text = input("Enter message to encrypt: ")
+shift = input("Enter shift: ")
 shift = int(shift)
-
-# to do ask user how many times to encrypt / decrypt
 
 def encrypt(string, s):
     encryption = ""
@@ -38,11 +36,11 @@ def encrypt(string, s):
         # if a number, iterate through 9 numbers
         elif c.isdigit():
             c_unicode = ord(c)
-            c_index = ord(c) - ord('1')
+            c_index = ord(c) - ord('0')
             #shift
-            new_index = (c_index + shift) % 9
+            new_index = (c_index + shift) % 10
             #convert to new char
-            new_unicode = new_index + ord('1')
+            new_unicode = new_index + ord('0')
             new_char = chr(new_unicode) 
             encryption += new_char
 
@@ -52,14 +50,12 @@ def encrypt(string, s):
             #could shift for numbers in text
     return encryption
 
-print("\nEncryption:")
+print("\nEncryption------->")
 print("Plain text: ", text)
 print("Shift\t  : ", str(shift))
 print("Encrypted : ", encrypt(text,shift))
 
 encrypted_text = encrypt(text,shift)
-
-# ask if user wants to decrypt
 
 def decrypt(string):
     decryption = ""
@@ -90,11 +86,11 @@ def decrypt(string):
         # if a number, iterate through 9 numbers
         elif c.isdigit():
             c_unicode = ord(c)
-            c_index = ord(c) - ord('1')
+            c_index = ord(c) - ord('0')
             #shift
-            new_index = (c_index - shift) % 9
+            new_index = (c_index - shift) % 10
             #convert to new char
-            new_unicode = new_index + ord('1')
+            new_unicode = new_index + ord('0')
             new_char = chr(new_unicode) 
             decryption += new_char
         else:
@@ -104,7 +100,7 @@ def decrypt(string):
     return decryption
 
 #to do: ask user if they want to decrypt
-print("\nDecryption:")
+print("\nDecryption------->")
 print("Encrypted : ", encrypted_text)
 print("Shift\t  : ", str(shift))
 print("Decrypted : ", decrypt(encrypted_text))
@@ -115,7 +111,7 @@ def brute_force(string):
     x = 0
     #number shift index
     lx = 0
-    print("Brute force decryption: ")
+    print("Brute force decryption------->")
     while x < 26:
         attempt = ""
         x = x+1
@@ -143,11 +139,11 @@ def brute_force(string):
             # if a number, iterate through 9 numbers
             elif c.isdigit():
                 c_unicode = ord(c)
-                c_index = ord(c) - ord('1')
+                c_index = ord(c) - ord('0')
                 #shift
-                new_index = (c_index + lx) % 9
+                new_index = (c_index + lx) % 10
                 #convert to new char
-                new_unicode = new_index + ord('1')
+                new_unicode = new_index + ord('0')
                 new_char = chr(new_unicode) 
                 attempt += new_char
             else:
@@ -156,7 +152,12 @@ def brute_force(string):
         print(x,":\t",attempt)
     return attempt
 
-# ask if user wants to do brute force decryption
-brute_force(encrypted_text)
+user_input = input("\nEnter 'Y/y' to see all possible decryptions or any key to exit: ")
+if (user_input == 'y') or (user_input == 'Y'):
+    brute_force(encrypted_text)
+
+
+
+
 
 
